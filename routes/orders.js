@@ -6,11 +6,8 @@ import moment from "moment";
 
 const router = express.Router();
 
-router.get("/", authenticateToken, async (req, res) => {
+router.get("/", async (req, res) => {
   const orders = await Order.findAll({
-    // where: {
-    //   makerId: req.user.id
-    // }
     limit: 10,
   });
   res.json(orders);
@@ -51,6 +48,15 @@ router.post("/", authenticateToken, async (req, res) => {
   }
 });
 
+router.get("/:id/bids", async (req, res) => {
+  const { id } = req.params;
+  const bids = await OrderBid.findAll(
+    { where: { orderId: id } },
+    { limit: 10 }
+  );
+  res.json(bids);
+});
+
 router.post("/:id/bids", authenticateToken, async (req, res) => {
   const { id } = req.params;
   const { price } = req.body;
@@ -65,14 +71,16 @@ router.post("/:id/bids", authenticateToken, async (req, res) => {
       orderId: id,
       takerId: req.user.userId,
       price,
-      expiresAt: moment().add(durationDays, "days").format("YYYY-MM-DD HH:mm:ss"),
+      expiresAt: moment()
+        .add(durationDays, "days")
+        .format("YYYY-MM-DD HH:mm:ss"),
     });
 
     return res.status(201).json(orderBid);
   } catch (err) {
     return res
       .status(500)
-      .json({ message: "Error creating order bid", error: err.message });
+      .json({ message: "Error creating bid", error: err.message });
   }
 });
 
