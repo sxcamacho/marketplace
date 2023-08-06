@@ -1,7 +1,6 @@
-import Sequelize from "sequelize";
-import db from "./index.js";
+import { sequelize, Sequelize } from "./index.js";
 
-const User = db.sequelize.define("User", {
+const User = sequelize.define("User", {
   username: Sequelize.STRING,
   password: Sequelize.STRING,
 });
