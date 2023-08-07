@@ -1,11 +1,11 @@
 import express from "express";
-import authenticateToken from "../middleware/authenticateToken.js";
+import authenticationMiddleware from "../middleware/authenticationMiddleware.js";
 import User from "../models/User.js";
 import Order from "../models/Order.js";
 
 const router = express.Router();
 
-router.get("/me", authenticateToken, async (req, res) => {
+router.get("/me", authenticationMiddleware, async (req, res) => {
   const { userId } = req.user;
   const user = await User.findByPk(userId);
   if (!user) {
@@ -14,7 +14,7 @@ router.get("/me", authenticateToken, async (req, res) => {
   res.json(user);
 });
 
-router.get("/me/orders", authenticateToken, async (req, res) => {
+router.get("/me/orders", authenticationMiddleware, async (req, res) => {
   const { userId } = req.user;
 
   try {
