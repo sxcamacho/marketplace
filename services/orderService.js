@@ -16,6 +16,10 @@ export async function getOrderById(id) {
   return order;
 }
 
+export async function getOrdersByUserId(userId) {
+  return await Order.findAll({ where: { makerId: userId } });
+}
+
 export async function createOrder({ makerId, price, amount }) {
   const startAt = moment();
   const durationDays = 3;
