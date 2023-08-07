@@ -1,5 +1,5 @@
 import { sequelize, Sequelize } from "./index.js";
-import User from "./User.js";
+import User from "./user.js";
 
 const Order = sequelize.define("Order", {
   makerId: {

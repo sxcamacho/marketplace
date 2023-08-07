@@ -1,6 +1,6 @@
 import { sequelize, Sequelize } from "./index.js";
-import User from "./User.js";
-import Order from "./Order.js";
+import User from "./user.js";
+import Order from "./order.js";
 
 const OrderBid = sequelize.define("OrderBid", {
   takerId: {

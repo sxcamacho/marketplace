@@ -1,7 +1,7 @@
 import express from "express";
 import { config } from "dotenv";
-import authRoutes from "./routes/auth.js";
-import usersRoutes from "./routes/users.js";
+import authRoutes from "./routes/authRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
 import { sequelize } from "./models/index.js";
 import errorHandlingMiddleware from "./middleware/errorHandlingMiddleware.js";
@@ -18,7 +18,7 @@ async function start() {
 
     app.use(express.json());
     app.use("/auth", authRoutes);
-    app.use("/users", usersRoutes);
+    app.use("/users", userRoutes);
     app.use("/orders", orderRoutes);
 
     app.use(errorHandlingMiddleware);

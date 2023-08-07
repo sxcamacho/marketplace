@@ -1,6 +1,6 @@
 import { Sequelize } from "../models/index.js";
-import Order from "../models/Order.js";
-import OrderBid from "../models/OrderBid.js";
+import Order from "../models/order.js";
+import OrderBid from "../models/orderBid.js";
 import CustomError from "../utils/CustomError.js";
 import moment from "moment";
 
