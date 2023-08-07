@@ -4,6 +4,10 @@
 
 Marketplace is a [Node.js](https://nodejs.org/en/) application for managing online transactions between users. This application demonstrates a basic use case of managing users and orders.
 
+## API Documentation
+
+This project uses [Swagger UI](https://swagger.io/tools/swagger-ui/) for API documentation. You can view the interactive documentation and try out the API endpoints at http://localhost:3001/api-docs/ after running the server (WIP).
+
 ## Installation
 
 ### Pre-requisites
