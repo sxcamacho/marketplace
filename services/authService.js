@@ -14,12 +14,12 @@ export async function login({ username, password }) {
   const user = await User.findOne({ where: { username } });
 
   if (!user) {
-    throw new CustomError("Username or password are invalid", 400);
+    throw new CustomError("Username or password are invalid", 401);
   }
 
   const validPassword = await bcrypt.compare(password, user.password);
   if (!validPassword) {
-    throw new CustomError("Username or password are invalid", 400);
+    throw new CustomError("Username or password are invalid", 401);
   }
 
   const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET);
