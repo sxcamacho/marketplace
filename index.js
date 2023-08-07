@@ -21,6 +21,56 @@ const swaggerJsdocOptions = {
       description:
         "This is a simple CRUD API application made with Express and documented with Swagger",
     },
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          // arbitrary name for the security scheme
+          type: "http",
+          scheme: "bearer",
+          bearerFormat: "JWT",
+        },
+      },
+      schemas: {
+        Order: {
+          type: "object",
+          properties: {
+            id: {
+              type: "integer",
+              description: "Order ID",
+            },
+            makerId: {
+              type: "integer",
+              description: "ID of the user who created the order",
+            },
+            price: {
+              type: "number",
+              format: "float",
+              description: "Price of the order",
+            },
+            amount: {
+              type: "number",
+              format: "float",
+              description: "Amount of the order",
+            },
+            startAt: {
+              type: "string",
+              format: "date-time",
+              description: "Datetime when the order starts",
+            },
+            endsAt: {
+              type: "string",
+              format: "date-time",
+              description: "Datetime when the order ends",
+            },
+            canceledAt: {
+              type: "string",
+              format: "date-time",
+              description: "Datetime when the order was cancelled",
+            },
+          },
+        },
+      },
+    },
     servers: [
       {
         url: SERVER_URL,
