@@ -16,7 +16,4 @@ if (configEnv.use_env_variable) {
   );
 }
 
-export {
-  sequelize,
-  Sequelize
-}
+export { sequelize, Sequelize };
