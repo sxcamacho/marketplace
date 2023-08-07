@@ -1,4 +1,6 @@
-function errorHandlingMiddleware(err, req, res, next) {
+import CustomError from "../utils/CustomError.js";
+
+const errorHandlingMiddleware = (err, req, res, next) => {
   if (err instanceof CustomError) {
     res.status(err.statusCode || 500).json({
       message: err.message,
@@ -8,6 +10,6 @@ function errorHandlingMiddleware(err, req, res, next) {
   } else {
     res.status(500).json(err);
   }
-}
+};
 
 export default errorHandlingMiddleware;
