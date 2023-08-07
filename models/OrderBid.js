@@ -13,8 +13,8 @@ const OrderBid = sequelize.define("OrderBid", {
   price: Sequelize.DECIMAL,
   expiresAt: Sequelize.DATE,
   acceptedAt: Sequelize.DATE,
-  createdNotificationSentAt: Sequelize.DATE,
-  acceptedNotificationSentAt: Sequelize.DATE,
+  bidNotificationSentAt: Sequelize.DATE,
+  acceptanceNotificationSentAt: Sequelize.DATE,
 });
 
 OrderBid.belongsTo(User, { foreignKey: "takerId", as: "taker" });
